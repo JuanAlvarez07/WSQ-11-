@@ -1,0 +1,79 @@
+#include <iostream>
+#include <sstream>
+#include <algorithm>
+
+using namespace std;
+
+string NumberToString ( int Number )
+{
+	stringstream ss;
+	ss << Number;
+	return ss.str();
+}
+string Reverse( string y){
+  reverse(y.begin(), y.end());
+  return y;
+}
+int StringToNumber ( const string y )
+{
+	stringstream ss(y);
+	int result;
+	return ss >> result ? result : 0;
+}
+int Check(int normal,int reverse){
+  cout<<normal<<" + "<<reverse<<" = "<<normal+reverse<<endl;
+	int result = normal + reverse;
+	string result1 = NumberToString(result);
+  string t1= NumberToString(normal);
+  string t2= NumberToString(reverse);
+  int sizeT2=t2.size();
+	int size_result1=result1.size();
+
+  if((result1[0]==result1[size_result1-1])&&(result1[1]==result1[size_result1-2])){
+    cout<<"its a L"<<endl;
+  }
+  else{
+		for(int i=0;i<6;i++){
+		int mama =	StringToNumber(result1);
+		cout<<"mama: "<<mama<<endl;
+		int baby = mama;
+		cout<<"baby: "<<baby<<endl;
+		string b = NumberToString(baby);
+		cout<<"B:"<<b<<endl;
+		string d = Reverse(b);
+		cout<<"d"<<d<<endl;
+		int da = StringToNumber(d);
+		int result2 = da + mama;
+		cout<<"Result2: "<<result2<<endl;
+		mama=result2;
+		string r2= NumberToString(result2);
+		int size2 = r2.size();
+		if((r2[0]==r2[size2-1])&&(r2[1]==r2[size2-2])){
+	    cout<<"its a L"<<endl;
+		}
+  	}
+	}
+}
+
+int main(){
+  cout<<"lower:";
+  int lower;
+  cin>>lower;
+  cout<<"higher";
+  int higher;
+  cin>>higher;
+  for(int i=lower;i<=higher;i++){
+  string y = NumberToString(i);
+  cout<<y<<endl;
+  string z = Reverse(y);
+  int x=StringToNumber(z);
+  cout<<x<<endl;
+  int f = Check(i,x);
+}
+
+
+
+
+
+  return 0;
+}
